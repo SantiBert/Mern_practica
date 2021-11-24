@@ -2,6 +2,7 @@ import React from 'react';
 import Sidebar from '../layout/Sidebar';
 import Header from '../layout/Header';
 import FormTask from '../tasks/FormTask';
+import ListTask from '../tasks/ListTask';
 
 const Projects = () => {
     return (
@@ -12,7 +13,7 @@ const Projects = () => {
                 <main>
                     <FormTask />
                     <div className="contendor-tareas">
-
+                        <ListTask />
                     </div>
                 </main>
             </div>
