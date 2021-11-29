@@ -10,14 +10,14 @@ const ListProjects = () => {
         getProjects();
     }, []);
 
-    if(projetcs.length === 0 ) return null;
+    if(projetcs.length === 0 ) return <p>No hay proyectos, comienza creando uno</p>;
     
     return (
         <ul className="listado-proyecto">
-            {projetcs.map((project) => (
+            {projetcs.map(project => (
                 <Project
-                    project={project}
                     key={project.id}
+                    project={project}
                 />
             ))}
         </ul>

@@ -1,5 +1,6 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
 import Task from './Task';
+import projectContext from '../../context/projects/projectContext';
 
 const ListTask = () => {
 
@@ -10,10 +11,18 @@ const ListTask = () => {
         { name: 'Elegir hosting', status: false },
     ];
 
+    const projectsContext = useContext(projectContext);
+    
+    const { project, deleteProject } = projectsContext;
+
+    if(!project) return <h2>Selecciona un proyecto</h2>
+
+    const [ actualProject ] = project;
+    
     return (
         <Fragment>
             <h2>
-                Proyecto: tienda virtual
+                Proyecto: { actualProject.name }
             </h2>
             <ul className="listado-tareas">
                 {taskPoryect.length === 0
@@ -21,10 +30,13 @@ const ListTask = () => {
                     : taskPoryect.map(task => (
                         <Task task={task} />
                     ))}
-                <button type="button" className="btn btn-eliminar">
+            </ul>
+            <button 
+                type="button" 
+                className="btn btn-primario"
+                onClick={() =>deleteProject(actualProject.id)}>
                     Eliminar proyectos &times;
                 </button>
-            </ul>
         </Fragment>
     );
 }
