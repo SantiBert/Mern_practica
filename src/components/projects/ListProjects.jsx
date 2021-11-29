@@ -4,7 +4,11 @@ import projectContext from '../../context/projects/projectContext';
 
 const ListProjects = () => {
     const projectContextForm = useContext(projectContext);
-    const { projetcs } = projectContextForm;
+    const { projetcs, getProjects } = projectContextForm;
+
+    useEffect(() => {
+        getProjects();
+    }, []);
 
     if(projetcs.length === 0 ) return null;
     
